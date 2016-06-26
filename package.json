@@ -1,11 +1,11 @@
 {
   "name": "@guumaster/rpg-generator-engine",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A random generator utility class",
   "homepage": "https://roleando.herokuapp.com/",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/guumaster/rpg-generator-engine"
+    "type": "git",
+    "url": "https://github.com/guumaster/rpg-generator-engine"
   },
   "author": "guumaster <guuweb@gmail.com>",
   "license": "MIT",
