@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@guumaster/rpg-generator-engine",
   "version": "0.1.0",
   "description": "A random generator utility class",
