@@ -1,6 +1,6 @@
 'use strict'
 
-const toNumber = require('./filter_to_number')
+import toNumber from './filter_to_number'
 
 const nameLowerRE = /(\s*(del|el|al|la|de|un|una|unas|unos|uno|the|of|from)\s+)/gi
 
