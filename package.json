@@ -1,6 +1,6 @@
 {
   "name": "@guumaster/rpg-generator-engine",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A random generator utility class",
   "homepage": "https://roleando.herokuapp.com/",
   "repository": {
