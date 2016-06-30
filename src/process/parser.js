@@ -4,7 +4,7 @@ import { id } from '../utils'
 
 const cleanLine = str => String(str).trim().replace(/\s+/, ' ')
 const comments = str => !str.match(/^\/\//)
-const splitLines = str => str.split(/\n/g).map(cleanLine).filter(id).filter(comments)
+const splitLines = str => str.split(/\n/g).map(cleanLine).filter(comments)
 
 const parseLine = str => {
   const [, num, line] = str.match(/(?:([0-9.]+),)?(.*)/)
@@ -13,7 +13,7 @@ const parseLine = str => {
 
 const parseRemoteLine = str => {
   const [, name, id] = str.match(/([^:]+):(.*)/)  //regex with src (/([^:]+):([^:]+):(.*)/)
-  return [id, {name, id}]
+  return (name && id) ? [id, {name, id}] : null
 }
 
 const matchRemoteHeader = str => str.match(/^;@(usa|use|remotes|tablas)/)
@@ -67,9 +67,11 @@ export default (str, fromContext) => {
       sources[type][key] += line + "\n"
     }
 
-    if (type === 'remotes') {
+    if (type === 'remotes' && line) {
       const remote = parseRemoteLine(line)
-      sources[type][remote[0]] = remote[1]
+      if (remote) {
+        sources[type][remote[0]] = remote[1]
+      }
     }
     return sources
   }, {

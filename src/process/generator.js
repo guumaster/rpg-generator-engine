@@ -20,13 +20,13 @@ const makeInlineGenerator = str => {
   }
 }
 
-const execReplacement = (str, selectors, fromContext, recursive) => {
+export const execReplacement = (str, selectors, fromContext, recursive) => {
   const lines = str.split(/\n/)
 
   return lines.reduce((final, line) => {
     let match
     if (!hasMoreSelectors(line)) {
-      return `${final}\n${line}`
+      return `${final ? `${final}\n` : ''}${line}`
     }
 
     while (match = generatorRE.exec(line)) {
@@ -42,12 +42,11 @@ const execReplacement = (str, selectors, fromContext, recursive) => {
       // only add known generators to the queue
       let dice
       if (dice = isDiceRoll(name)) {
-        let roller = makeRoller(name)
+        let roller = makeRoller(name, filters)
         line = line.replace(pattern, roller())
       }
 
       let generator = inlineGenerator || selectors[`${context}.${name}`] || selectors[name]
-
 
       if (generator) {
         let moddedFn = getModdedGenerator(mod, generator)
@@ -60,7 +59,7 @@ const execReplacement = (str, selectors, fromContext, recursive) => {
         line = line.replace(pattern, filtered(parsed))
       }
     }
-    return `${final}${(recursive)?'':'\n'}${line}`
+    return `${(recursive)?'': `${final ? `${final}\n` : ''}`}${line}`
 
   }, '')
 }

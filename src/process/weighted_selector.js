@@ -1,13 +1,15 @@
 'use strict'
 
+import { execReplacement } from './generator'
+
 export default (tables, selectors) => {
   return Object.keys(tables).reduce((obj, key) => {
-    obj[key] = createWeightedSelector(tables[key])
+    obj[key] = createWeightedSelector(tables[key], selectors)
     return obj
   }, selectors)
 }
 
-const createWeightedSelector = table => {
+const createWeightedSelector = (table, selectors) => {
   const inSet = table.map(row => row[1])
   const inWeights =  table.map(row => row[0])
   if (!Array.isArray(inSet) || !Array.isArray(inWeights)) {
@@ -29,7 +31,7 @@ const createWeightedSelector = table => {
       key -= weighted[index]
 
       if (key < 0) {
-        return inSet[index]
+        return execReplacement(inSet[index], selectors)
       }
     }
   }

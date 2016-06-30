@@ -1,5 +1,7 @@
 'use strict'
 
+const toNumber = require('./filter_to_number')
+
 const nameLowerRE = /(\s*(del|el|al|la|de|un|una|unas|unos|uno|the|of|from)\s+)/gi
 
 const MALE_PATTERNS = [
@@ -75,5 +77,8 @@ export const FILTERS = {
   may: toUpperCase,
   min: toLowerCase,
   masc: toMale,
-  fem: toFemale
+  fem: toFemale,
+
+  num: toNumber,
+  num1: num => toNumber(num, true)
 }
