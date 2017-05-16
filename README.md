@@ -1,4 +1,7 @@
 
+
+## **_DEPRECATED_** in favor of [@guumaster/rpgen](https://github.com/guumaster/rpgen)
+
 **_WARNING: A lot of Spanish ahead!_**
 
 
@@ -6,7 +9,7 @@
 
 Este modulo permite generar contenido aleatorio basado en texto formateado. Puedes usar plantillas, tablas con pesos, filtros, y varias utilidades.
 
-## Demo onine 
+## Demo online 
 
 Puedes ver un monton de ejemplos de funcionamiento online aquí: [Roleando - Generadores aleatorios](https://roleando.herokuapp.com/generadores)
 
